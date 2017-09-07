@@ -12,39 +12,28 @@ public class Recipiente {
 	boolean isFull = false;
 
 	synchronized int consume() {
-		int c = cantidad;
 		try {
-			if (isFull) {
-				isFull = false;
-				cantidad = 0;
-				notifyAll();
-			} else {
+			while (!isFull) {
 				wait();
 			}
+			isFull = false;
+			notifyAll();
 		} catch (InterruptedException ex) {
 			Logger.getLogger(Nota.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		return c;
+		return cantidad;
 	}
 
-	synchronized void produce(int cantidad) {
-		try {
-			int i = 0;
-			while (true) {
-				i++;
-				if (isFull) {
-					wait();
-				} else {
-					isFull = true;
-					this.cantidad = cantidad;
-					notifyAll();
-				}
-				Thread.sleep(2000);
-				if (i > 10)
-					break;
+	synchronized void produce(int cant) {
+		while (isFull) {
+			try {
+				wait();
+			} catch (InterruptedException ex) {
+				System.out.println("Error");
 			}
-		} catch (InterruptedException ex) {
-			System.out.println("Error");
 		}
+		isFull = true;
+		cantidad = cant;
+		notifyAll();
 	}
 }

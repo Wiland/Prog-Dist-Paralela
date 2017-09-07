@@ -2,7 +2,6 @@ package co.com.elpoli.pdp.exercise;
 
 public class Productor implements Runnable {
 	Recipiente rec;
-	int i = 0;
 
 	public Productor(Recipiente rec) {
 		this.rec = rec;
@@ -10,9 +9,24 @@ public class Productor implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Voy a depositar " + i + " " + rec.nombre);
-		rec.produce(i);
+		int cant = 0;
+		double random = 0.0;
 
+		while (cant < 10) {
+			cant++;
+			rec.produce(cant);
+			System.out.println("Se depositan " + cant + " " + rec.nombre);
+			random = Math.random();
+			try {
+				if (random < 0.5) {
+					Thread.sleep(2000);
+				} else {
+					Thread.sleep(1000);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
