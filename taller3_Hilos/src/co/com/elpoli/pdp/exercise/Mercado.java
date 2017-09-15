@@ -7,8 +7,11 @@ public class Mercado {
 		Thread c2 = new Thread(new Consumidor(rec, "Luis"));
 		Thread c1 = new Thread(new Consumidor(rec, "Jose"));
 		
+		c1.setPriority(Thread.MIN_PRIORITY);
+		c2.setPriority(Thread.MIN_PRIORITY);
 		c2.start();
 		c1.start();
+		p.setPriority(Thread.MAX_PRIORITY);
 		p.start();
 	}
 }
