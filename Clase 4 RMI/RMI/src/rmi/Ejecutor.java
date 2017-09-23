@@ -17,6 +17,6 @@ public class Ejecutor extends UnicastRemoteObject implements EjecutorInterface {
     @Override
     public int sumar(TareaInterface t) throws RemoteException {
         System.out.println("ejecutando la suma");
-        return t.suma(2, 3);
+        return t.suma();
     }
 }

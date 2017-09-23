@@ -21,7 +21,7 @@ public class RMIClient {
             }
             EjecutorInterface ej = (EjecutorInterface) Naming.lookup("rmi://localhost/ejecutor");
 
-            TareaInterface tarea = new Tarea();
+            TareaInterface tarea = new Tarea(3, 4);
             String respuesta = ej.ejecutar(tarea);
             int resultado = ej.sumar(tarea);
             System.out.println(respuesta);
