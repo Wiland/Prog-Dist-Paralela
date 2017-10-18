@@ -1,0 +1,84 @@
+<hmtl>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="nombres">Cargando nombre...</div>
+  <div id="ubicacion">Cargando ubicaciones...</div>
+  <div id="estado">Cargando estados...</div>
+  </body>
+
+</html>
+
+
+
+#nombres, #ubicacion, #estado {
+  display: inline-block;
+  width: 32%;
+  vertical-align: top;
+}
+
+table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+td {
+  padding: 3px;
+}
+
+th {
+  padding: 7px 4px;
+}
+
+console.clear();
+var x = document.getElementsByTagName("body")[0];
+var contentNames = document.getElementById("nombres");
+var contentAddress = document.getElementById("ubicacion");
+var contentStatus = document.getElementById("estado");
+
+let promesa_nombre = new Promise((resolve,reject) => {
+	$.getJSON( "https://www.datos.gov.co/resource/uz87-8a52.json", function( data ) {
+		setTimeout(resolve, 2000, data);
+	});
+});
+let promesa_ubic = new Promise((resolve,reject) => {
+	$.getJSON( "https://www.datos.gov.co/resource/uz87-8a52.json", function( data ) {
+		setTimeout(resolve, 5000, data);
+	});
+});
+let promesa_estado = new Promise((resolve,reject) => {
+	$.getJSON( "https://www.datos.gov.co/resource/uz87-8a52.json", function( data ) {
+		setTimeout(resolve, 3000, data);
+	});
+});
+
+Promise.all([promesa_nombre,promesa_ubic]).then( resultados => {
+  let nombres = initTable("Nombres");
+  let ubic = initTable("Ubicaciones");
+  for(nombre of resultados[0]){
+    nombres += "<tr><td>" + nombre.nombre + "</td></tr>";
+  }
+  for(u of resultados[1]){
+    ubic += "<tr><td>" + u.ubicacion + "</td></tr>";
+  }
+  nombres += "</tbody></table>"
+  contentNames.innerHTML = nombres;
+  ubic += "</tbody></table>"
+  contentAddress.innerHTML = ubic;
+});
+
+function initTable(title){
+  return "<table border='1' style='border-collapse:collapse'><thead><tr><th>"+title+"</th></tr></thead><tbody>";
+}
+
+promesa_estado.then((data)=>{
+	let estados = initTable("Estados");
+  for(estado of data){
+    estados += "<tr><td>" + estado.estado + "</td></tr>";
+  }
+  estados += "</tbody></table>"
+  contentStatus.innerHTML = estados;
+});

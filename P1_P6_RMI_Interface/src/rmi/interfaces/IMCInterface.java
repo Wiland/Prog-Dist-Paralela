@@ -1,10 +1,8 @@
-package rmi;
+package rmi.interfaces;
 
 import java.io.Serializable;
 
-public interface TareaInterface extends Serializable {
-    
-    public String recado();
+public interface IMCInterface extends Serializable {
 
-    public int suma();
+    public double compute();
 }

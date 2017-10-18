@@ -1,10 +1,8 @@
-package rmi;
+package rmi.interfaces;
 
 import java.rmi.*;
 
 public interface EjecutorInterface extends Remote {
 
-    public String ejecutar(TareaInterface t) throws RemoteException;
-
-    public int sumar(TareaInterface t) throws RemoteException;
+    public double computeIMC(IMCInterface t) throws RemoteException;
 }

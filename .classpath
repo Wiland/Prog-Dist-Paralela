@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/Cliente2/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/ClienteUDP/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/ClientTCP/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/multicastUDP/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/ServerTCP/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/ServerTCP2/src"/>
+	<classpathentry kind="src" path="Clase 3 Sockets TCP - UDP/ServidorUDP/src"/>
+	<classpathentry kind="src" path="Clase 4 RMI/RMI/src"/>
+	<classpathentry kind="src" path="Clase 4 RMI/RMIClient/src"/>
+	<classpathentry kind="src" path="Clase 4 RMI/RMIServer/src"/>
+	<classpathentry kind="src" path="Taller2/src"/>
+	<classpathentry kind="src" path="taller3_Hilos/src"/>
+	<classpathentry kind="src" path="Taller4Cliente/src"/>
+	<classpathentry kind="src" path="Taller4Servidor/src"/>
+	<classpathentry kind="src" path="Taller5_RMI/RMITallerEntities/src"/>
+	<classpathentry kind="src" path="Taller5_RMI/RMITallerServer/src"/>
+	<classpathentry kind="lib" path="Clase 3 Sockets TCP - UDP/Cliente2/dist/Cliente2.jar"/>
+	<classpathentry kind="lib" path="Clase 3 Sockets TCP - UDP/ClientTCP/dist/ClientTCP.jar"/>
+	<classpathentry kind="lib" path="Clase 3 Sockets TCP - UDP/ServerTCP/dist/ServerTCP.jar"/>
+	<classpathentry kind="lib" path="Clase 3 Sockets TCP - UDP/ServerTCP2/dist/ServerTCP2.jar"/>
+	<classpathentry kind="lib" path="Clase 4 RMI/RMI/dist/RMI.jar"/>
+	<classpathentry kind="lib" path="Clase 4 RMI/RMIClient/dist/lib/RMI.jar"/>
+	<classpathentry kind="lib" path="Clase 4 RMI/RMIClient/dist/RMIClient.jar"/>
+	<classpathentry kind="lib" path="Clase 4 RMI/RMIServer/dist/RMIServer.jar"/>
+	<classpathentry kind="lib" path="Taller4Servidor/dist/Taller4Servidor.jar"/>
+	<classpathentry kind="output" path="Clase 3 Sockets TCP - UDP/ClientTCP/build/classes"/>
+</classpath>

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmiserver;
+package rmi.server;
 
-import rmi.Ejecutor;
+import rmi.interfaces.Ejecutor;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
-import rmi.EjecutorInterface;
+import rmi.interfaces.EjecutorInterface;
 
 public class RMIServer {
 
@@ -19,7 +19,7 @@ public class RMIServer {
                 System.setSecurityManager(new RMISecurityManager());
             }
             EjecutorInterface imp = new Ejecutor();
-            Naming.rebind("rmi://localhost/ejecutor", imp);
+            Naming.rebind("rmi://localhost/imc", imp);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -27,7 +27,7 @@ public class RMIServer {
     }
 
     public static void main(String args[]) {
-        System.out.println("Levantando el servidor...");
+        System.out.println("Iniciando el servidor...");
         RMIServer server = new RMIServer();
     }
 }

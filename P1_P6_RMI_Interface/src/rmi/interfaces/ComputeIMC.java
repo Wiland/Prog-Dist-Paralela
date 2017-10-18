@@ -1,21 +1,19 @@
-package rmi;
+package rmi.interfaces;
 
-public class Tarea implements TareaInterface {
-    int a;
-    int b;
+public class ComputeIMC implements IMCInterface {
+    private double mass = 0d; 
+    private double height = 0d;
     
-    public Tarea(int a, int b){
-        this.a = a;
-        this.b = b;
+    public ComputeIMC(double mass, double height){
+        this.mass = mass;
+        this.height = height;
     }
     
     @Override
-    public String recado() {
-        return "Hello World";
+    public double compute() {
+        System.out.println("Calculando IMC= "+ mass + "/(" + height + "^2)");
+        return (mass / Math.pow(height, 2));
     }
+    
 
-    @Override
-    public int suma() {
-        return this.a + this.b;
-    }
 }

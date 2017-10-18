@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmiclient;
+package rmi.client;
 
-import rmi.Tarea;
+import rmi.interfaces.ComputeIMC;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
-import rmi.TareaInterface;
-import rmi.EjecutorInterface;
+import rmi.interfaces.IMCInterface;
+import rmi.interfaces.EjecutorInterface;
 
 public class RMIClient {
 
@@ -19,13 +19,11 @@ public class RMIClient {
             if (System.getSecurityManager() == null) {
                 System.setSecurityManager(new RMISecurityManager());
             }
-            EjecutorInterface ej = (EjecutorInterface) Naming.lookup("rmi://localhost/ejecutor");
+            EjecutorInterface ej = (EjecutorInterface) Naming.lookup("rmi://localhost/imc");
 
-            TareaInterface tarea = new Tarea(3, 4);
-            String respuesta = ej.ejecutar(tarea);
-            int resultado = ej.sumar(tarea);
-            System.out.println(respuesta);
-            System.out.println("Resultado suma: " + resultado);
+            IMCInterface tarea = new ComputeIMC(80, 1.78);
+            double imc = ej.computeIMC(tarea);
+            System.out.println("El IMC es de: " + imc);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
