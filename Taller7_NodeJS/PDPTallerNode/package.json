@@ -1,10 +1,10 @@
 {
   "name": "PDPTallerNode",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ejercicio",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --harmony server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+            <%if (locals.created) { %>
+                <div class="alert alert-success">
+                    <strong>Creado!</strong> <%= locals.book %>
+                </div>
+            <% } %>
+            <%if (locals.error) { %>
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <%= locals.error %>
+                </div>
+            <% } %>
+        <div class="form-group">
+            <form action="/books" method="POST">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Ingrese Titulo"
+                  value="<% if(locals.book != undefined) { 'title' in locals.book ? locals.book.title : ''; } %>" >
+                <br>
+                <label>Author</label>
+                <input type="text" name="author" class="form-control" placeholder="Ingrese Autor"
+                  value="<% if(locals.book != undefined) { 'title' in locals.book ? locals.book.author : ''; } %>" >
+                <br>
+                <label>Pages</label>
+                <input type="text" name="pages" class="form-control" placeholder="Ingrese Páginas"
+                  value="<% if(locals.book != undefined) { 'title' in locals.book ? locals.book.pages : ''; } %>" >
+                <br>
+                <label>Price</label>
+                <input type="text" name="price" class="form-control" placeholder="Ingrese Precio"
+                  value="<% if(locals.book != undefined) { 'title' in locals.book ? locals.book.price : ''; } %>" >
+                <br>
+                <input type="submit" name="" value="Enviar" class="btn btn-info">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>

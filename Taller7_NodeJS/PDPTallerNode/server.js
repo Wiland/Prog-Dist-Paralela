@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Book = require('./src/models/book');
-const bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
 const uri = 'mongodb://localhost/libreries';
 const _ = require("lodash");
 
@@ -30,19 +30,16 @@ mongoose.connection.on("error", () => {
 var router = express.Router();
 app.use(router);
 
-
+app.set('views', __dirname + '/src/views');
 //app.set("view engine","pug");
 app.set("view engine", "ejs");
 
-app.use(express.static(__dirname + '/src/public'));
+// app.use(express.static(__dirname + '/src/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(8000);
 
-app.get('/', function(req, res) {
-    res.render('views/parameters');
-});
 // app.get("/books", function(req, res){
 //     Book
 //         .find({})

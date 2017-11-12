@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%if (locals.error) { %>
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> <%= locals.error %>
+                    </div>
+                <% } %>
+                <% cont  = 1; %>
+                    <% locals.books.forEach((book) =>{ %>
+                        <tr>
+                            <th scope="row" class="col-md-2">
+                                <%= cont %>
+                            </th>
+                            <td class="col-md-2">
+                                <%= book.title; %>
+                            </td>
+                            <td class="col-md-2">
+                                <%= book.author; %>
+                            </td>
+                            <td class="col-md-2">
+                                <%= book.pages; %>
+                            </td>
+                            <td class="col-md-2">
+                                <%= book.price; %>
+                            </td>
+                            <td class="col-md-2">
+                                <a href="/books/<%= book._id %>" class="btn btn-info">Editar</a>
+                                <a href="/books/delete/<%= book._id %>" class="btn btn-info">Eliminar</a>
+                            </td>
+                        </tr>
+                        <% cont++; }); %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/book" class="btn btn-info">Crear nuevo</a>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

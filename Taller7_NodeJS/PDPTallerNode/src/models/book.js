@@ -29,6 +29,6 @@ bookSchema = new Schema({
     this.parameter = parameterInc + ".";
 });*/
 
-const Book = mongoose.model('books', bookSchema);
+const Book = mongoose.model('book', bookSchema);
 
 module.exports = Book;
