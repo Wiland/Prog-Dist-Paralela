@@ -61,19 +61,47 @@ export class GameViewComponent implements OnInit {
       this.game.team2.goals += 1;
     }
     try{
-      this._gamesService.editGame(this.game);
+      this._gamesService.editGame(this.game).subscribe(
+        data => {
+          this.successMsg = "Libro actualizado correctamente";
+          this.errorMsg = "";
+        },
+        error => {
+          console.log(error.json().message);
+          this.manageError(error);
+        });
     } finally{}
   }
 
   finishGame(){
     this.game.online = false;
     this.game.finalized = true;
-    this._gamesService.editGame(this.game);
+    try{
+      this._gamesService.editGame(this.game).subscribe(
+        data => {
+          this.successMsg = "Libro actualizado correctamente";
+          this.errorMsg = "";
+        },
+        error => {
+          console.log(error.json().message);
+          this.manageError(error);
+        });
+    } finally{}
   }
 
   newPeriod(){
     this.game.period += 1;
-    this._gamesService.editGame(this.game);
+    try{
+      this._gamesService.editGame(this.game).subscribe(
+        data => {
+          this.successMsg = "Libro actualizado correctamente";
+          this.errorMsg = "";
+        },
+        error => {
+          console.log(error.json().message);
+          this.manageError(error);
+        });
+    } finally{}
   }
 
 }

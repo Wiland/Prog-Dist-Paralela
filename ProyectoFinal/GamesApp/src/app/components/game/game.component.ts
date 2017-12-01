@@ -48,9 +48,15 @@ export class GameComponent implements OnInit {
     this.game.online = true;
     this.game.finalized = false;
     try{
-      this._gamesService.saveGame(this.game);
-      this.successMsg = "Se agregó el juego correctamente";
-      this.errorMsg = "";
+      this._gamesService.saveGame(this.game).subscribe(
+        data => {
+          this.successMsg = "Libro creado correctamente";
+          this.errorMsg = "";
+        },
+        error => {
+          console.log(error.json().message);
+          this.manageError(error);
+        });
     } catch (error){
       this.successMsg = "";
       this.errorMsg = "No se agregó el juego";

@@ -30,7 +30,6 @@ export class GamesService {
     let url = `${ this._serviceConfig.BASE_SERVICE_URL }/games`;
     let headers = new Headers();
 
-    headers.append("authorization", this._serviceConfig.token );
     headers.append("Accept", "application/json" );
 
     return this.http.get( url, { headers } )
@@ -52,17 +51,17 @@ export class GamesService {
 
   saveGame(game){
     this.games.push(game);
-    // let url = `${ this._serviceConfig.BASE_SERVICE_URL }/games`;
-    // let headers = new Headers();
-    //
-    // headers.append("Accept", "application/json" );
-    //
-    // return this.http.post( url, game, { headers: headers } )
-    //   .map( res => {
-    //     this.result = res.json();
-    //     console.log(this.result);
-    //     return this.result;
-    //   });
+    let url = `${ this._serviceConfig.BASE_SERVICE_URL }/games`;
+    let headers = new Headers();
+
+    headers.append("Accept", "application/json" );
+
+    return this.http.post( url, game, { headers: headers } )
+      .map( res => {
+        this.result = res.json();
+        console.log(this.result);
+        return this.result;
+      });
   }
 
   editGame(game){
