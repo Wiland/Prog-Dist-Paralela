@@ -1,0 +1,36 @@
+<br><br>
+<div class="container container rounded">
+  <div *ngIf="(logInTried && !authentication.success)" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> Usuario y/o contraseña inválidos
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <img class="card-img-top" src="/assets/img/library.png" alt="Card image cap">
+        <div class="card-body">
+          <h3>BibliotecApp</h3>
+          <br>
+          <form (onSubmit)="logIn()">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="user.username" name="username" class="form-control" id="txtUser" placeholder="Ingrese su usuario">
+            </div>
+            <div class="form-group">
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="txtPass" placeholder="Contraseña">
+            </div>
+            <button type="submit" (click)="logIn()" class="btn btn-primary">Entrar</button><hr>
+            <small>Si no tienes cuenta
+            <a [routerLink]="['/sign-up']">Regístrate...</a></small>
+          </form>
+        </div>
+        <div class="card-footer text-muted">
+          {{ counter }} libros disponibles
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

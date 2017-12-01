@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <br>
+  <div *ngIf="(errorMsg != '')" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> {{ errorMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="(successMsg != '')" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>OK!</strong> {{ successMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-header text-center text-white bg-primary">
+      <h3>Listado de libros disponibles</h3>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngIf="showNewForm">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header text-center">
+              <h3>{{ create ? "Nuevo" : "Actualizar" }} Libro</h3>
+            </div>
+            <div class="card-body">
+              <form (onSubmit)="logIn()">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="txtTitle">Título</label>
+                    <input type="text" [(ngModel)]="newBook.title" name="title" class="form-control" id="txtTitle" placeholder="Ingrese el nombre">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="txtAuthor">Autor</label>
+                    <input type="text" [(ngModel)]="newBook.author" name="author" class="form-control" id="txtAuthor" placeholder="Ingrese el autor">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="txtPages">Nro. Páginas</label>
+                    <input type="text" [(ngModel)]="newBook.pages" name="pages" class="form-control" id="txtPages" placeholder="Ingrese el número de páginas">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="txtPrice">Precio ($)</label>
+                    <input type="text" [(ngModel)]="newBook.price" name="pages" class="form-control" id="txtPrice" placeholder="Ingrese el precio">
+                  </div>
+                </div>
+                <div class="form-group text-right">
+                  <button *ngIf="create" type="submit" (click)="createBook()" class="btn btn-outline-primary btn-group-justified">Crear</button>
+                  <button *ngIf="!create" type="submit" (click)="updateBook()" class="btn btn-outline-primary btn-group-justified">Actualizar</button>
+                  <button type="button" (click)="cancelNewBook()" class="btn btn-outline-danger btn-group-justified">Cancelar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table table-responsive-md">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Páginas</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of books; let i = index;">
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.pages }}</td>
+                <td>{{ book.price | currency:'USD':true}}</td>
+                <td><button type="button" name="Editar" class="btn btn-outline-primary" (click)="bookDetail(i)">Editar</button></td>
+                <td><button type="button" name="Borrar" class="btn btn-outline-danger" (click)="deleteBook(i)">Borrar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <button type="button" name="addBook" class="btn btn-primary" (click)="addBook()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

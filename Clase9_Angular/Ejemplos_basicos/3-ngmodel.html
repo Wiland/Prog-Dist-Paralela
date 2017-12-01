@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Bootstrap -->
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluir AngularJS -->
+    <script src="./node_modules/angular/angular.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container text-center">
+
+        <h1>{{ "Tu nombre es: " | uppercase }} {{nombre}}</h1>
+        <input ng-model="nombre" type="text" placeholder="Ingresa tu nombre" class="form-control">
+
+        <p>Selección: {{opcion}}</p>
+        <select ng-model="opcion" class="form-control">
+            <option value="1">primera</option>
+            <option value="2">segunda</option>
+            <option value="3">tercera</option>
+        </select>
+
+        <br>
+        <p>radio: {{genero}}</p>
+        <input type="radio" value="H" ng-model="genero">Hombre
+        <br>
+        <input type="radio" value="M" ng-model="genero">Mujer
+    </div>
+
+
+</body>
+
+</html>

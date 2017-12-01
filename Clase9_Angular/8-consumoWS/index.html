@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ApiApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ejemplo Api Rest</title>
+
+
+    <!-- Incluir Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- Incluir AngularJS -->
+    <script src="js/lib/angular.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container" ng-controller="mainCtrl">
+        <h1>Tareas Api</h1>
+        <hr>
+        <br>
+        <br> Tareas: {{ tasks }}
+        <br> Creada: {{ createdTask }}
+        <br> Editada: {{ editedTask }}
+
+    </div>
+
+</body>
+
+</html>

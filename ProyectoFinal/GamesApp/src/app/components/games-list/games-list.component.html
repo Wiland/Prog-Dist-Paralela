@@ -1,0 +1,45 @@
+<br><br>
+<div class="container-fluid">
+  <div *ngIf="(errorMsg != '')" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> {{ errorMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="(successMsg != '')" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>OK!</strong> {{ successMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card bg-dark">
+    <div class="card-header">
+      Listado de juegos
+    </div>
+    <div class="card-body">
+      <table class="table table-hover table-dark text-center table-responsive-md">
+        <thead>
+          <tr>
+            <th scope="col">Deporte</th>
+            <th scope="col">Equipo Local</th>
+            <th scope="col">Equipo Visitante</th>
+            <th scope="col">Período</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-secondary text-dark text-center" *ngFor="let game of games; let i = index;">
+            <th scope="row">{{ game.type }}</th>
+            <td>{{ game.team1.name }}</td>
+            <td>{{ game.team2.name }}</td>
+            <td>{{ game.period }}</td>
+            <td><div class="{{ game.online ? 'green-indicator' : 'red-indicator' }} d-inline-block"></div> {{ game.online ? "En juego" : "Finalizado" }}</td>
+            <td><a [routerLink]="['/game',i]">Detalles</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-success" name="button" [routerLink]="['/game']">Agregar Juego</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container">
+  <br>
+  <div *ngIf="(errorMsg != '')" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> {{ errorMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="(successMsg != '')" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>OK!</strong> {{ successMsg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-header text-center text-white bg-dark">
+          <h3>Actualizar juego</h3>
+        </div>
+        <div class="card-body text-dark">
+          <br>
+          <div class="row">
+            <div class="col-md-6 align-middle">
+              <div class="card">
+                <div class="card-body ">
+                  <p><strong>Deporte: </strong> {{ game.type }}</p>
+                  <p><strong>Período: </strong> {{ game.period }}</p>
+                  <p><strong>Estado: </strong> {{ game.online ? "Jugando en este momento" : "Finalizado" }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <div class="card bg-light mb-3" >
+                    <div class="card-body">
+                      <h4 class="card-title">{{ game.team1.goals }} anotaciones</h4>
+                      <h6 class="card-subtitle mb-2 text-muted">{{ game.team1.name }} <span class="badge badge-primary">L</span></h6>
+                      <button type="button" class="btn btn-success d-inline" name="oneMorePoint1" (click)="addPoint(1)">+</button>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-12 text-center">
+                  <div class="card bg-light mb-3" >
+                    <div class="card-body">
+                      <h4 class="card-title">{{ game.team2.goals }} anotaciones</h4>
+                      <h6 class="card-subtitle mb-2 text-muted">{{ game.team2.name }} <span class="badge badge-warning">V</span></h6>
+                      <button type="button" class="btn btn-success d-inline" name="oneMorePoint2" (click)="addPoint(2)">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer text-dark text-center">
+          <button type="button" (click)="finishGame()" class="btn btn-primary {{ (game.finalized || !game.online) ? 'disabled' : '' }}">Finalizar Juego</button>
+          <button type="button" (click)="newPeriod()" class="btn btn-primary">Siguiente Período</button>
+          <button type="button" [routerLink]="['/games']" class="btn btn-danger">Volver</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

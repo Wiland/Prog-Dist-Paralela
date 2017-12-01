@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    background: #151515;
+}
+
+#navbar {
+    transform: translateX(-150px);
+    transition: transform 300ms ease-in;
+    width: 300px;
+    height: 100%;
+    background-color: black;
+    padding: 0;
+    font-family: sans-serif;
+    position: fixed;
+    z-index: 20;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    top: 0;
+}
+
+#navbar.slideIn {
+    transform: translateX(0);
+}
+
+#navbar.slideOut {
+    transform: translateX(-100%);
+}
+
+#navbar > ul {
+    list-style: none;
+    padding: 0;
+}
+
+#navbar > ul > li {
+    padding: 15px 15px;
+    color: #FFF;
+    text-decoration: none;
+    background-color: #000;
+}
+
+#navbar > ul > li {
+    padding: 0;
+    height: 50px;
+}
+
+#navbar > ul > li > a {
+    text-decoration: none;
+    color: #4A4A4A;
+    background-color: #000;
+    cursor: pointer;
+    padding: 15px;
+    position: absolute;
+    width: 270px;
+}
+
+#navbar > ul > li > a:hover,
+#navbar > ul > li > a:focus {
+    background-color: #1D1D1D;
+}
+
+#space-content-menu {
+    height: 50px;
+}
+
+#icon-button-menu-open {
+    position: fixed;
+    padding: 12px 12px 9px 12px;
+    background: rgba(0,0,0,1);
+    z-index: 10;
+    border-radius: 0 0 7px 0;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+
+#icon-button-menu-close {
+    padding: 15px 15px 7px 10px;
+    cursor: pointer;
+    text-align: right;
+}
