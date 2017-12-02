@@ -1,0 +1,12 @@
+.green-indicator{
+  width: 80px;
+  height: 24px;
+  background-color: green;
+  border-radius: 10%;
+}
+.red-indicator{
+  width: 80px;
+  height: 24px;
+  background-color: red;
+  border-radius: 10%;
+}
